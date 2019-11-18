@@ -21,12 +21,14 @@
 		    .navbar {
 		    	margin-bottom: 0;
 		    	border-radius: 0;
+		    	max-height: 50px;
 		    }
 		    
 		    /* Add a gray background color and some padding to the footer */
 		    footer {
-		    	background-color: #f2f2f2;
+		    	background-color: #5cb85c;
 		    	padding: 25px;
+		    	color: white;
 		    }
 
 		    .lni-standard-size {
@@ -44,6 +46,49 @@
 		    	background-color: #e6ffe6;
 		    }
 
+		    .jumbotron {
+		    	background-color:#b3ffb3;
+			}
+
+			section {
+				position: relative;
+				background-color: transparent !important;
+			}
+
+			section .img {
+				position: absolute;
+				left:0; top:0;
+				background-image: url('img/header-2.jpg');
+		    	background-size: cover;
+		    	background-repeat: no-repeat;
+		    	z-index: -1;
+		    	height: 100%;
+		    	min-height: 100px;
+		    	opacity: 0.45;
+		    	width: 100%;
+			}
+
+			section .container {
+				background-color: transparent;
+			}
+
+			nav {
+				color: red;
+			}
+
+			.panel-body {
+				color: #555;
+			}
+
+			h1 {
+				color: #555;
+			}
+
+			a {
+				text-decoration: none;
+				color: green;
+			}
+
 		</style>
 	</head>
 	<body>
@@ -52,43 +97,44 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#">NGUMPULI</a>
+					<p class="navbar-text subtl">Berita Populer Lewat Surel</p>
 				</div>
-				<p class="navbar-text subtl">Berita Populer Lewat Surel</p>
 			</div>
 		</nav>
 
-		<div class="jumbotron" style="background-color:#b3ffb3">
+		<section class="jumbotron">
+			<div class="img"></div>
 			<div class="container text-center">
-				<h1>Halo, Kami dari NGUMPULI</h1>
-				<p>Berita Populer Lewat Surel</p>
+				<h1>NGUMPULI</h1>
+				<p class="lead">Berita Populer Lewat Surel</p>
 			</div>
-		</div>
+		</section>
 
 		<div class="container ngum-content">
 			<div class="row text-center">
 				<div class="col-sm-4">
 					<h1><i class="lni-cloudnetwork lni-standard-size"></i></h1>
-					<p class="lead">Mengumpulkan Berita dan Artikel Populer Untuk Kamu Dari Beberapa Situs Terpopuler.</p>
+					<p class="lead">Kami mengumpulkan berita dan artikel populer untuk kamu dari berbagai situs terpopuler.</p>
 				</div>
 				<div class="col-sm-4">
 					<h1><i class="lni-envelope lni-standard-size"></i></h1>
-					<p class="lead">Dikirimkan Otomatis ke Surel Kamu, Tiga Kali Sehari.</p>
+					<p class="lead">Dikirimkan otomatis ke surel kamu, tiga kali sehari. Menemani kamu pada saat makan pagi, istirahat makan siang dan selepas beraktivitas.</p>
 				</div>
 				<div class="col-sm-4">
 					<h1><i class="lni-target lni-standard-size"></i></h1>
-					<p class="lead">Kamu bisa tetap fokus dan produktif sekaligus tetap update dengan berita Indonesia terkini.</p>
+					<p class="lead">Kamu bisa tetap fokus dan produktif sekaligus tetap <i>up to date</i> dengan berita Indonesia terkini. Selamat tinggal, distraksi!</p>
 				</div>
 			</div>
 			<div class="row text-center">
 				<div class="col-sm-12">
 					<form class="form-inline">
 						<div class="form-group">
-							<label class="sr-only" for="exampleInputName3">Name</label>
-							<input type="email" class="form-control" id="exampleInputName3" placeholder="Nama Kamu">
+							<label class="sr-only" for="inputNamamu">Nama</label>
+							<input type="email" class="form-control" id="inputNamamu" placeholder="Nama Kamu">
 						</div>
 						<div class="form-group">
-							<label class="sr-only" for="exampleInputEmail3">Email address</label>
-							<input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email Kamu">
+							<label class="sr-only" for="inputSurelMu">Email address</label>
+							<input type="email" class="form-control" id="inputSurelMu" placeholder="Email Kamu">
 						</div>
 						<button type="submit" class="btn btn-success">Berlangganan</button>
 						<button type="submit" class="btn btn-success">Coba Sekali Saja</button>
@@ -101,14 +147,179 @@
 			<div class="row text-center">
 				<div class="col-sm-12">
 					<p class="lead">
-						NGUMPULI menggunakan algoritma yang otomatis mengkurasi berita dan artikel dari situs pilihan. Cukup dengan berlangganan layanan NGUMPULI,
-						kamu bisa terus up to date dengan berita dan artikel populer yang tersebar di beberapa situs pilihan kami, langsung di kotak masuk surel kamu.
+						<!-- NGUMPULI merupakan sebuah teknologi berbasiskan algoritma <i>web-crawling</i>, yang memiliki kemampuan untuk mengumpulkan berita dan artikel secara otomatis dan berkala dari berbagai macam situs Indonesia pilihan. -->
+
+						NGUMPULI merupakan sebuah layanan pengumpul berita dan artikel berbasiskan algoritma <i>web-crawling</i> yang secara otomatis dan berkala mengumpulkan berita dan artikel populer dari berbagai macam situs Indonesia pilihan.
 					</p>
 					<p class="lead">
-						Menarik? Daftarkan alamat surel kamu pada form di atas.
+						<!-- Cukup dengan berlangganan layanan NGUMPULI, kamu bisa terus <i>up to date</i> dengan berita dan artikel populer dari beberapa situs pilihan kami langsung di kotak masuk surel kamu. -->
+
+						Dengan berlangganan layanan NGUMPULI, kamu bisa terus <i>up to date</i> dengan berita dan artikel populer di Indonesia yang akan kami sajikan langsung di kotak masuk surel kamu.
+					</p>
+					<p class="lead">
+						Menarik? Masukkan nama dan alamat surel kamu pada form di atas, lalu klik tombol "Berlangganan". Gratis!
+					</p>
+
+					<p class="lead">
+						Ragu berlangganan? Klik tombol "Coba Sekali Saja" pada form diatas untuk satu buah surel saja, kapanpun kamu mau.
 					</p>
 				</div>
 			</div>
 		</div>
+
+		<div class="container ngum-content">
+			<div class="row text-center">
+				<div class="col col-sm-12">
+					<h1>Ngumpuli Terkini</h1>
+					<p>Dirangkum pada pukul 19.00 WIB</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container ngum-content">
+			<div class="row">
+				<div class="col col-sm-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
+						</div>
+						<div class="panel-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. <a href="#">selengkapnya..</a>
+						</div>
+					</div>
+				</div>
+				<div class="col col-sm-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
+						</div>
+						<div class="panel-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. <a href="#">selengkapnya..</a>
+						</div>
+					</div>
+				</div>
+				<div class="col col-sm-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
+						</div>
+						<div class="panel-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. <a href="#">selengkapnya..</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container ngum-content">
+			<div class="row">
+				<div class="col col-sm-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
+						</div>
+						<div class="panel-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. <a href="#">selengkapnya..</a>
+						</div>
+					</div>
+				</div>
+				<div class="col col-sm-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
+						</div>
+						<div class="panel-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. <a href="#">selengkapnya..</a>
+						</div>
+					</div>
+				</div>
+				<div class="col col-sm-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
+						</div>
+						<div class="panel-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. <a href="#">selengkapnya..</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container ngum-content">
+			<div class="row">
+				<div class="col col-sm-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
+						</div>
+						<div class="panel-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. <a href="#">selengkapnya..</a>
+						</div>
+					</div>
+				</div>
+				<div class="col col-sm-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
+						</div>
+						<div class="panel-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. <a href="#">selengkapnya..</a>
+						</div>
+					</div>
+				</div>
+				<div class="col col-sm-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
+						</div>
+						<div class="panel-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. <a href="#">selengkapnya..</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container ngum-content">
+			<div class="row text-center">
+				<div class="col col-sm-12">
+					<a href="#inputNamamu">Selengkapnya? Mulai berlangganan atau coba sekali saja</a>
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="container text-center">
+				<p class="mute">Copyright &copy; 2019 by NGUMPULI</p>
+			</div>
+		</footer>
 	</body>
 </html>
