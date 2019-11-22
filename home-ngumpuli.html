@@ -139,14 +139,14 @@
 			</div>
 			<div class="row text-center">
 				<div class="col-sm-12">
-					<form class="form-inline">
+					<form class="form-inline" action="http://api.ngumpuli.com/ngumpuli/user/subscribe" method="get">
 						<div class="form-group">
 							<label class="sr-only" for="inputNamamu">Nama</label>
-							<input type="email" class="form-control" id="inputNamamu" placeholder="Nama Kamu">
+							<input type="text" name="name" class="form-control" id="inputNamamu" placeholder="Nama Kamu">
 						</div>
 						<div class="form-group">
 							<label class="sr-only" for="inputSurelMu">Email address</label>
-							<input type="email" class="form-control" id="inputSurelMu" placeholder="Email Kamu">
+							<input type="email" name="emailAddress" class="form-control" id="inputSurelMu" placeholder="Email Kamu">
 						</div>
 						<button type="submit" class="btn btn-success">Berlangganan</button>
 						<button type="submit" class="btn btn-success">Coba Sekali Saja</button>
