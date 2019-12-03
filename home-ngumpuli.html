@@ -95,7 +95,7 @@
 
 			/*future content, set display to none*/
 			#newsContent {
-				display: none;
+				display: block;
 			}
 
 			h3 {
@@ -103,8 +103,135 @@
 			}
 
 		</style>
+		<script>
+
+			function createNode(element) {
+	            return document.createElement(element);
+	        }
+
+	        function append(parent, el) {
+	            return parent.appendChild(el);
+	        }
+
+	        function onload() {
+	        	fetchContent();
+	        }
+
+			function fetchContent() {
+				fetch("http://api.ngumpuli.com/ngumpuli/v1/latest-issue")
+	            .then((resp) => resp.json())
+	            .then(function(data){
+	            	return data;
+	            })
+	            .then(function(ngumpuliData){
+	            	return ngumpuliData.data;
+	            })
+	            .then(function(data){
+	            	const latestIssueContainer = document.getElementById("sectionLatestIssue");
+	            	console.log(data.length);
+	            	for(var i = 0; i < data.length; i++) {
+	            		console.log("loop index: " + i);
+	            		if(i < 3) {
+	            			if(i === 0) {
+	            				//create div with class row
+		            			let rows = createNode('div');
+		            			rows.setAttribute('class','row');
+		            			rows.setAttribute('id', 'rows'+i);
+		            			append(latestIssueContainer, rows);
+		            			generateColsContent(rows, data[i]);
+	            			}
+	            			else {
+	            				var tempi = parseInt(i/3);
+	            				console.log("rows"+tempi);
+	            				let rows = document.getElementById("rows"+tempi);
+	            				generateColsContent(rows, data[i]);
+	            			}
+	            		}
+
+	            		if(i >= 3) {
+	            			if(i % 3 === 0) {
+	            				var tempi = parseInt(i/3);
+	            				let rows = createNode('div');
+		            			rows.setAttribute('class','row');
+		            			rows.setAttribute('id', 'rows'+tempi);
+		            			append(latestIssueContainer, rows);
+		            			generateColsContent(rows, data[i]);
+	            			}else {
+	            				var tempi = parseInt(i/3);
+	            				console.log("rows"+tempi);
+	            				let rows = document.getElementById("rows"+tempi);
+	            				generateColsContent(rows, data[i]);
+	            			}
+	            		}
+	            	}
+	            });
+			}
+			/*function generateColsContent(rows, data) {
+				let columns = createNode('div');
+        		columns.setAttribute('class', 'col col-sm-4');
+        		append(rows, columns);
+
+        		let panelContainer = createNode('div');
+        		panelContainer.setAttribute('class', 'panel panel-success');
+        		append(columns, panelContainer);
+
+        		let panelHeader = createNode('div');
+        		panelHeader.setAttribute('class', 'panel-heading');
+        		let panelTitleH3 = createNode('h3');
+        		panelTitleH3.setAttribute('class', 'panel-title');
+        		panelTitleH3.innerHTML = data.title;
+        		append(panelHeader, panelTitleH3);
+        		append(panelContainer, panelHeader);
+
+        		let panelBody = createNode('div');
+        		panelBody.setAttribute('class','panel-body');
+        		panelBody.innerHTML = data.subtitle + "&nbsp; ";
+        		let selengkapnyaUrl = createNode('a');
+        		selengkapnyaUrl.setAttribute('href', data.url);
+        		selengkapnyaUrl.innerHTML = "Selengkapnya...";
+        		append(panelBody, selengkapnyaUrl);
+        		append(panelContainer, panelBody);
+			}*/
+
+			function generateColsContent(rows, data) {
+				let columns = createNode('div');
+        		columns.setAttribute('class', 'col-md-4');
+        		append(rows, columns);
+
+        		let thumbnailDiv = createNode('div');
+        		thumbnailDiv.setAttribute('class', 'thumbnail');
+        		append(columns, thumbnailDiv);
+
+        		let imgEl = createNode('img');
+        		imgEl.setAttribute('src', data.imgUrl);
+        		imgEl.setAttribute('style', 'min-height: 162px')
+        		append(thumbnailDiv, imgEl);
+
+        		let captionDiv = createNode('div');
+        		captionDiv.setAttribute('class', 'caption');
+        		append(thumbnailDiv, captionDiv);
+
+        		let captionH3 = createNode('h3');
+        		captionH3.innerHTML = data.title;
+        		append(captionDiv, captionH3);
+
+        		let captionParagraphSubtitle = createNode('p');
+        		captionParagraphSubtitle.innerHTML = "(" + data.source + ") " + data.subtitle;
+        		append(captionDiv, captionParagraphSubtitle);
+
+        		let captionParagraphButtonContainer = createNode('p');
+        		append(captionDiv, captionParagraphButtonContainer);
+
+        		let captionParagraphButton = createNode('a');
+        		captionParagraphButton.setAttribute('href', data.url);
+        		captionParagraphButton.setAttribute('class', 'btn btn-success');
+        		captionParagraphButton.setAttribute('role', 'button');
+        		captionParagraphButton.innerHTML = "Selengkapnya";
+        		append(captionDiv, captionParagraphButton);
+			}
+		</script>
 	</head>
-	<body>
+	<body onload="onload();">
 		<!-- Image and text -->
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
@@ -156,7 +283,7 @@
 			</div>
 		</div>
 
-		<div class="container ngum-content" style="max-width: 70em">
+		<div class="container ngum-content">
 			<div class="row">
 				<div class="col-sm-12">
 					<h3><b>Tentang Kami</b></h3>
@@ -196,145 +323,16 @@
 		</div>
 
 		<div id="newsContent">
-			<div class="container ngum-content">
+			<div class="container ngum-content" style="max-width: 30em">
 				<div class="row text-center">
 					<div class="col col-sm-12">
-						<h1>Ngumpuli Terkini</h1>
+						<h3><b>Ngumpuli Terkini</b></h3>
 						<p>Dirangkum pada pukul 19.00 WIB</p>
 					</div>
 				</div>
 			</div>
 
-			<div class="container ngum-content">
-				<div class="row">
-					<div class="col col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
-							</div>
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. <a href="#">selengkapnya..</a>
-							</div>
-						</div>
-					</div>
-					<div class="col col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
-							</div>
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. <a href="#">selengkapnya..</a>
-							</div>
-						</div>
-					</div>
-					<div class="col col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
-							</div>
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. <a href="#">selengkapnya..</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="container ngum-content">
-				<div class="row">
-					<div class="col col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
-							</div>
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. <a href="#">selengkapnya..</a>
-							</div>
-						</div>
-					</div>
-					<div class="col col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
-							</div>
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. <a href="#">selengkapnya..</a>
-							</div>
-						</div>
-					</div>
-					<div class="col col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
-							</div>
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. <a href="#">selengkapnya..</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="container ngum-content">
-				<div class="row">
-					<div class="col col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
-							</div>
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. <a href="#">selengkapnya..</a>
-							</div>
-						</div>
-					</div>
-					<div class="col col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
-							</div>
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. <a href="#">selengkapnya..</a>
-							</div>
-						</div>
-					</div>
-					<div class="col col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Buntut Gugatan Suara USU Ditolak PTUN: Kampus Krisis Demokrasi</h3>
-							</div>
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. <a href="#">selengkapnya..</a>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="container ngum-content" id="sectionLatestIssue">
 			</div>
 
 			<div class="container ngum-content">
