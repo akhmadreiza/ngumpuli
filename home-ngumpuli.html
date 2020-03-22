@@ -216,7 +216,11 @@
         		append(captionDiv, captionH3);
 
         		let captionParagraphSubtitle = createNode('p');
-        		captionParagraphSubtitle.innerHTML = "(" + data.source + ") " + data.subtitle;
+        		if(data.subtitle != null) {
+        			captionParagraphSubtitle.innerHTML = data.subtitle;
+        		} else {
+        			captionParagraphSubtitle.innerHTML = "";
+        		}
         		append(captionDiv, captionParagraphSubtitle);
 
         		let captionParagraphButtonContainer = createNode('p');
